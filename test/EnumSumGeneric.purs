@@ -12,7 +12,7 @@ import Foreign (Foreign)
 import Foreign as Foreign
 import Simple.JSON as JSON
 import Test.Assert (assert)
-import Type.Prelude (class IsSymbol, SProxy(..), reflectSymbol)
+import Type.Prelude (class IsSymbol, Proxy(..), reflectSymbol)
 
 enumReadForeign :: forall a rep
    . Generic a rep
@@ -44,7 +44,7 @@ instance constructorEnumReadForeign ::
        else throwError <<< pure <<< Foreign.ForeignError $
             "Enum string " <> s <> " did not match expected string " <> name
     where
-      name = reflectSymbol (SProxy :: SProxy name)
+      name = reflectSymbol (Proxy :: Proxy name)
 
 data Fruit
   = Abogado
